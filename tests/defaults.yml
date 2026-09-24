@@ -1,0 +1,7 @@
+parameters:
+  defaults:
+    helm_values:
+      foo: bar
+      from_parameters: "yes"
+    createNamespace: true
+    namespace: test-defaults

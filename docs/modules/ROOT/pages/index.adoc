@@ -1,0 +1,12 @@
+= helm-chart
+
+helm-chart is a Commodore component to deploy a helm chart to the cluster.
+
+The component is multi-tenant, multi-instance and multi-version aware. Each
+instance is compiled with `--alias <instance>` and gets its own namespace. The
+chart version can be pinned per instance.
+
+By default the component installs the OCI chart `test-helm-chart` from
+`oci://ghcr.io/bacluc-agent/test-helm-chart/test-helm-chart`.
+
+See the xref:references/parameters.adoc[parameters] reference for further details.

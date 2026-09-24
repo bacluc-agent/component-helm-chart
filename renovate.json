@@ -1,0 +1,48 @@
+{
+  "extends": [
+    "config:base",
+    ":gitSignOff",
+    ":disableDependencyDashboard"
+  ],
+  "ignorePaths": [
+    ".github/**"
+  ],
+  "labels": [
+    "dependency"
+  ],
+  "separateMinorPatch": true,
+  "packageRules": [
+    {
+      "matchUpdateTypes": [
+        "patch",
+        "digest"
+      ],
+      "matchCurrentVersion": "!/^v?0\\./",
+      "automerge": true,
+      "platformAutomerge": false,
+      "labels": [
+        "dependency",
+        "automerge",
+        "bump:patch"
+      ]
+    },
+    {
+      "automerge": true,
+      "platformAutomerge": false,
+      "matchDatasources": [
+        "docker"
+      ],
+      "labels": [
+        "dependency",
+        "automerge",
+        "bump:minor"
+      ]
+    },
+    {
+      "matchDepNames": [
+        "ghcr.io/bacluc-agent/test-helm-chart"
+      ],
+      "versioning": "loose"
+    }
+  ]
+}
