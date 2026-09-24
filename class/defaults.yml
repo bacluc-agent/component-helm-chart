@@ -1,0 +1,15 @@
+parameters:
+  helm_chart:
+    =_metadata:
+      multi_tenant: true
+      multi_instance: true
+      multi_version: true
+    namespace: ${_instance}
+    createNamespace: true
+    charts:
+      chart1:
+        name: test-helm-chart
+        # renovate: datasource=docker depName=ghcr.io/bacluc-agent/test-helm-chart
+        version: "0.0.1"
+        source: oci://ghcr.io/bacluc-agent/test-helm-chart/test-helm-chart
+    helm_values: {}

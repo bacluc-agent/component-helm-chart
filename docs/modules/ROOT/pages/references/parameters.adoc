@@ -1,0 +1,100 @@
+= Parameters
+
+The parent key for all of the following parameters is `helm_chart`.
+
+The component is multi-tenant, multi-instance and multi-version aware. Each
+instance is compiled with `--alias <instance>` and can override the parameters
+below.
+
+== `namespace`
+
+[horizontal]
+type:: string
+default:: `${_instance}`
+
+The namespace in which to deploy this component.
+The default is the instance name, so each instance gets its own namespace.
+
+
+== Example
+
+[source,yaml]
+----
+namespace: example-namespace
+----
+
+== `createNamespace`
+
+[horizontal]
+type:: boolean
+default:: `true`
+
+Whether to create the namespace.
+
+
+== Example
+
+[source,yaml]
+----
+createNamespace: false
+----
+
+== `charts.chart1`
+
+[horizontal]
+type:: dict
+
+The helm chart to install.
+
+== `charts.chart1.name`
+
+[horizontal]
+type:: string
+default:: `test-helm-chart`
+
+The name of the helm chart.
+
+== `charts.chart1.version`
+
+[horizontal]
+type:: string
+default:: `0.0.1`
+
+The version of the helm chart.
+Each instance can pin its own version.
+
+
+== Example
+
+[source,yaml]
+----
+charts:
+  chart1:
+    version: "0.1.0"
+----
+
+== `charts.chart1.source`
+
+[horizontal]
+type:: string
+default:: `oci://ghcr.io/bacluc-agent/test-helm-chart/test-helm-chart`
+
+The source of the helm chart.
+This can be an OCI registry reference or a helm repository URL.
+
+== `helm_values`
+
+[horizontal]
+type:: dict
+default:: `{}`
+
+The values passed to the helm chart.
+
+
+== Example
+
+[source,yaml]
+----
+helm_values:
+  foo: bar
+----
