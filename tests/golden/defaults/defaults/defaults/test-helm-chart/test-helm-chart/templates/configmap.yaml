@@ -1,0 +1,9 @@
+apiVersion: v1
+data:
+  values: |2
+
+    foo: bar
+    from_parameters: "yes"
+kind: ConfigMap
+metadata:
+  name: test-helm-chart
