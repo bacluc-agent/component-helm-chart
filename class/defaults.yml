@@ -6,6 +6,8 @@ parameters:
       multi_version: true
     namespace: ${_instance}
     createNamespace: true
+    namespaceLabels: {}
+    namespaceAnnotations: {}
     charts:
       chart1:
         name: test-helm-chart
