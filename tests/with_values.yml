@@ -1,0 +1,8 @@
+parameters:
+  with_values:
+    helm_values:
+      foo: from-with-values
+      nested:
+        key: value
+    createNamespace: false
+    namespace: test-with-values

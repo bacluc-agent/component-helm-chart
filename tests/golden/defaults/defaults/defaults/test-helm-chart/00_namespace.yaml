@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  annotations:
+    syn.tools/source: https://github.com/appuio/component-helm-chart
+  labels:
+    component: helm-chart
+    instance: defaults
+    name: test-defaults
+  name: test-defaults

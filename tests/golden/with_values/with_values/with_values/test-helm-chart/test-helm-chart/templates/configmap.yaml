@@ -1,0 +1,10 @@
+apiVersion: v1
+data:
+  values: |2
+
+    foo: from-with-values
+    nested:
+      key: value
+kind: ConfigMap
+metadata:
+  name: test-helm-chart
