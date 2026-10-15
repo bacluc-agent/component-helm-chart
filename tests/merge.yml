@@ -1,0 +1,14 @@
+parameters:
+  merge:
+    charts:
+      chart1:
+        name: rabbitmq-instance
+        version: "0.1.0"
+        source: oci://ghcr.io/bacluc-agent/rabbitmq-instance-chart/rabbitmq-instance
+    helm_values:
+      rabbitmq:
+        plugins:
+          - rabbitmq_shovel
+          - rabbitmq_shovel_management
+    createNamespace: true
+    namespace: test-merge

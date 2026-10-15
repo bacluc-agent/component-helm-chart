@@ -89,6 +89,10 @@ type:: dict
 default:: `{}`
 
 The values passed to the helm chart.
+These values are deep-merged into the chart's default `values.yaml`.
+Maps are merged recursively.
+Lists are concatenated with the chart defaults first, followed by the entries from `helm_values`.
+This differs from previous behaviour, where a list set here replaced the chart default list entirely.
 
 
 == Example
