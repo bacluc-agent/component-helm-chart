@@ -93,6 +93,10 @@ These values are deep-merged into the chart's default `values.yaml`.
 Maps are merged recursively.
 Lists are concatenated with the chart defaults first, followed by the entries from `helm_values`.
 This differs from previous behaviour, where a list set here replaced the chart default list entirely.
+A `null` value in `helm_values` wins the merge; Helm treats `null` as unset, so this clears the chart default for that key.
+This is the only way to clear a chart default list: an empty list is still concatenated, not substituted.
+Re-listing an entry that is already in a chart default list produces a duplicate entry.
+Only the top-level chart `values.yaml` is merged; values for subcharts are still replaced by Helm, not merged.
 
 
 == Example

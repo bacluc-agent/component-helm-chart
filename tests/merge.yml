@@ -10,5 +10,6 @@ parameters:
         plugins:
           - rabbitmq_shovel
           - rabbitmq_shovel_management
+        replicas: 2
     createNamespace: true
     namespace: test-merge
