@@ -1,0 +1,27 @@
+parameters:
+  merge_edge:
+    charts:
+      chart1:
+        name: rabbitmq-instance
+        version: "0.1.0"
+        source: oci://ghcr.io/bacluc-agent/rabbitmq-instance-chart/rabbitmq-instance
+    helm_values:
+      rabbitmq:
+        plugins:
+          - rabbitmq_prometheus
+          - rabbitmq_shovel
+        replicas: 3
+        image:
+          version: "4.3.6"
+        service:
+          type: LoadBalancer
+        resources:
+          limits:
+            memory: 4Gi
+            cpu: null
+        rbac:
+          enabled: true
+          groups:
+            merge-edge-operator: coord-ops
+    createNamespace: true
+    namespace: test-merge-edge

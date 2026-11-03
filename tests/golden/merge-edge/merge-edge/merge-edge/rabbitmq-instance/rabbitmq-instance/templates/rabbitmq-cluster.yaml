@@ -1,0 +1,39 @@
+apiVersion: rabbitmq.com/v1beta1
+kind: RabbitmqCluster
+metadata:
+  name: rabbitmq
+  namespace: test-merge-edge
+spec:
+  image: docker.io/library/rabbitmq:4.3.6-alpine
+  override:
+    statefulSet:
+      spec:
+        template:
+          spec:
+            affinity:
+              podAntiAffinity:
+                requiredDuringSchedulingIgnoredDuringExecution:
+                  - labelSelector:
+                      matchLabels:
+                        app.kubernetes.io/component: rabbitmq
+                        app.kubernetes.io/name: rabbitmq
+                    topologyKey: kubernetes.io/hostname
+            containers: []
+            securityContext: {}
+  persistence:
+    storage: 3Gi
+  rabbitmq:
+    additionalConfig: |
+      vm_memory_high_watermark.absolute = 4Gi
+    additionalPlugins:
+      - rabbitmq_prometheus
+      - rabbitmq_shovel
+  replicas: 3
+  resources:
+    limits:
+      memory: 4Gi
+    requests:
+      cpu: '1'
+      memory: 3Gi
+  service:
+    type: LoadBalancer
