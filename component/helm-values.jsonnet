@@ -15,7 +15,7 @@ local hasHelmValues = std.length(std.objectFields(params.helm_values)) > 0;
 local valuesMessage =
   'Chart values file %s not found (chart %s@%s, instance %s). ' %
   [ valuesPath, chart.name, chart.version, inv.parameters._instance ] +
-  'helm_values are non-empty and would be lost without the chart defaults. ' +
+  "the chart's defaults are unavailable, so only helm_values would be passed to Helm. " +
   'Check the kapitan helm dependency configuration in class/helm-chart.yml: ' +
   'version %s of %s must be fetched to output_path %s. ' %
   [ chart.version, chart.source, chartDir ];
